@@ -1,0 +1,25 @@
+<div class="container">
+    <form #form = "ngForm">
+        <div class="class-group">
+            <label>Libelle</label>
+            <input type="text" name="libelle" class="form-control"[(ngModel)]="produit.libelle">
+        </div>
+        <div class="class-group">
+        <label>Code</label>
+        <input type="text" name="code" class="form-control"[(ngModel)]="produit.code">
+        </div>
+        <div class="class-group">
+            <label>Prix Unitaire</label>
+            <input type="number" name="prix" class="form-control" [(ngModel)]="produit.prixUnitaire">
+            </div>
+
+            <div class="class-group">
+                <label>Tva</label>
+                <input type="number" name="tva" class="form-control" [(ngModel)]="produit.tauxTVA">
+                </div>
+
+
+                <button class="btn btn-success" (click)="save()">save</button>
+
+    </form>
+</div>

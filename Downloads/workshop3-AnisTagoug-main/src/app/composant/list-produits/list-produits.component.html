@@ -1,0 +1,31 @@
+
+  <button class="btn btn-info" routerLink="/add-produit">Ajouter produit</button>
+<div class="search">
+  <input type="text" name="search" [(ngModel)] = "code" placeholder="Search" (input)="search()">
+</div>
+
+
+
+  <table class="table" >
+      <thead>
+        <tr>
+          <th scope="col">Identifiant</th>
+          <th scope="col">Libelle</th>
+          <th scope="col"> Code</th>
+          <th scope="col">Prix UNitaire</th>
+          <th scope="col">Taux Tva</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let prod of list">
+        <tr>
+          <th scope="row">{{prod.idProduit}}</th>
+          <td>{{prod.libelle}}</td>
+          <td>{{prod.code}}</td>
+          <td>{{prod.prixUnitaire}}</td>
+          <td>{{prod.tauxTVA}}</td>
+          <td *ngIf="prod.tauxTVA == 20 ; else su"><button type="button" class="btn btn-danger" disabled>Ajuster TVA</button></td>
+          <ng-template #su><td><button type="button" class="btn btn-danger" (click)="AjusteTva(prod.idProduit)" >Ajuster TVA</button></td></ng-template>
+        </tr>
+      </tbody>
+    </table>

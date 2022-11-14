@@ -1,0 +1,28 @@
+
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="Category" name="Category">
+      <br>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="searchUserByAccountCategory()">Search</button>
+    </form>
+  
+<table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"> firstName</th>
+        <th scope="col">lastName</th>
+        <th scope="col">email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let user of list">
+      <tr>
+        <th scope="row">{{user.idCustomer}}</th>
+        <td><img class="pic" src="{{user.picture}}" >{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td *ngIf="user.accountCategory == 'Admin' ; else su"><button type="button" class="btn btn-danger" (click)="deleteUser(user.idCustomer)" disabled>Danger</button></td>
+        <ng-template #su><td><button type="button" class="btn btn-danger" (click)="deleteUser(user.idCustomer)" >Danger</button></td></ng-template>
+      </tr>
+    </tbody>
+  </table>
